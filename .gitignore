@@ -65,6 +65,7 @@ dkms.conf
 *.fdb_latexmk
 *.synctex.gz
 *.synctex
+*.synctex(busy)
 *.bbl
 *.blg
 *.nav
