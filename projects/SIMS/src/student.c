@@ -8,15 +8,15 @@ Student* createStudent(int id, const char* name, int age, float score) {
         fprintf(stderr, "Memory allocation failed\n");
         return NULL;
     }
+    newStudent->id = id;
+    strncpy(newStudent->name, name, sizeof(newStudent->name) - 1);
+    newStudent->name[sizeof(newStudent->name) - 1] = '\0';
+    newStudent->age = age;
+    newStudent->score = score;
     return newStudent;
 }
 
 void addStudent(Student* student) {
-    if (findStudent(student->id) != NULL) {
-        fprintf(stderr, "Student with ID %d already exists\n", student->id);
-        free(student);
-        return;
-    }
     if (head == NULL) {
         head = student;
     } else {
@@ -70,7 +70,13 @@ Student* findStudent(int id) {
 }
 
 void displayAllStudents() {
+    if (head == NULL) {
+        printf("没有学生信息。\n");
+        return;
+    }
+    
     Student* current = head;
+    printf("所有学生信息：\n");
     while (current != NULL) {
         printf("ID: %d, Name: %s, Age: %d, Score: %.2f\n", current->id, current->name, current->age, current->score);
         current = current->next;

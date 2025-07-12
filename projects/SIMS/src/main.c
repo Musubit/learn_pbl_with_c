@@ -12,7 +12,7 @@ int main() {
         printf("3. 更新学生信息\n");
         printf("4. 查找学生\n");
         printf("5. 显示所有学生\n");
-        printf("6. 释放内存并退出\n");
+        printf("6. 退出系统\n");
         printf("请选择操作: ");
         scanf("%d", &choice);
 
