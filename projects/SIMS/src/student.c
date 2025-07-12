@@ -76,9 +76,12 @@ void displayAllStudents() {
     }
     
     Student* current = head;
+    printf("========================================\n");
     printf("所有学生信息：\n");
+    printf("========================================\n");
     while (current != NULL) {
-        printf("ID: %d, Name: %s, Age: %d, Score: %.2f\n", current->id, current->name, current->age, current->score);
+        printf("ID: %d\t Name: %s\t Age: %d\t Score: %.2f\n",
+             current->id, current->name, current->age, current->score);
         current = current->next;
     }
 }
