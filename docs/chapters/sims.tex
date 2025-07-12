@@ -1,13 +1,10 @@
 \chapter{学生信息管理系统}
 
 \section{项目概述}
-
 一个基于C语言的简单学生信息管理系统，使用单向链表实现数据存储。
 
 \section{项目设计}
-
 \subsection{数据结构设计}\label{sub:data_structure_design}
-
 系统使用单链表来存储学生信息，每个节点包含以下字段：
 \begin{itemize}
     \item $id$: 学生ID
@@ -42,9 +39,7 @@
 \section{详细设计}
 
 \subsection{数据结构实现}
-
 实现上文的\ref{sub:data_structure_design}: \nameref{sub:data_structure_design}中定义的学生信息节点结构体，使用C语言的结构体和指针来实现单向链表。
-
 \begin{lstlisting}[language=C, caption=学生信息节点结构体]
 typedef struct Student {
     int id;
@@ -59,23 +54,66 @@ typedef struct Student {
 
 \subsubsection{创建学生节点}
 \begin{lstlisting}[language=C, caption=创建学生节点函数]
-Student* createStudent(int id, const char* name, int age, float score) {
-    Student* newStudent = (Student*)malloc(sizeof(Student));
-    if (newStudent == NULL) {
-        printf("内存分配失败\n");
-        return NULL;
-    }
-    newStudent->id = id;
-    strcpy(newStudent->name, name);
-    newStudent->age = age;
-    newStudent->score = score;
-    newStudent->next = NULL;
-    return newStudent;
-}
+Student* createStudent(int id, const char* name, int age, float score);
 \end{lstlisting}
-
 \begin{itemize}
     \item \textbf{\textcolor{mydeepgreen}{功能}}: 创建一个新的学生节点并返回指向该节点的指针。
     \item \textbf{\textcolor{mydeepgreen}{参数}}: 学生ID、姓名、年龄、成绩。
     \item \textbf{\textcolor{mydeepgreen}{返回值}}: 返回新创建的学生节点指针。
+\end{itemize}
+
+\subsubsection{添加学生信息}
+\begin{lstlisting}[language=C, caption=添加学生信息函数]
+void addStudent(Student* student);
+\end{lstlisting}
+\begin{itemize}
+    \item \textbf{\textcolor{mydeepgreen}{功能}}: 将新学生信息添加到链表中。
+    \item \textbf{\textcolor{mydeepgreen}{参数}}: 待添加的学生的学生结构体指针。
+    \item \textbf{\textcolor{mydeepgreen}{返回值}}: 无返回值。
+\end{itemize}
+
+\subsubsection{删除学生信息}
+\begin{lstlisting}[language=C, caption=删除学生信息函数]
+void deleteStudent(int id);
+\end{lstlisting}
+\begin{itemize}
+    \item \textbf{\textcolor{mydeepgreen}{功能}}: 根据学生ID删除对应的学生信息。
+    \item \textbf{\textcolor{mydeepgreen}{参数}}: 学生ID。
+    \item \textbf{\textcolor{mydeepgreen}{返回值}}: 无返回值。
+\end{itemize}
+
+\subsubsection{修改学生信息}
+\begin{lstlisting}[language=C, caption=修改学生信息函数]
+void modifyStudent(int id, const char* name, int age, float score);
+\end{lstlisting}
+\begin{itemize}
+    \item \textbf{\textcolor{mydeepgreen}{功能}}: 根据学生ID修改对应的学生信息。
+    \item \textbf{\textcolor{mydeepgreen}{参数}}: 学生ID、姓名、年龄、成绩。
+    \item \textbf{\textcolor{mydeepgreen}{返回值}}: 无返回值。
+\end{itemize}
+
+\subsubsection{查询学生信息}
+\begin{lstlisting}[language=C, caption=查询学生信息函数]
+Student* queryStudent(int id);
+\end{lstlisting}
+\begin{itemize}
+    \item \textbf{\textcolor{mydeepgreen}{功能}}: 根据学生ID查询对应的学生信息。
+    \item \textbf{\textcolor{mydeepgreen}{参数}}: 学生ID。
+    \item \textbf{\textcolor{mydeepgreen}{返回值}}: 返回对应的学生节点指针，如果未找到则返回NULL。
+\end{itemize}
+
+\subsubsection{显示所有学生信息}
+\begin{lstlisting}[language=C, caption=显示所有学生信息函数]
+void displayAllStudents();
+\end{lstlisting}
+\begin{itemize}
+    \item \textbf{\textcolor{mydeepgreen}{功能}}: 显示系统中所有学生的基本信息。
+    \item \textbf{\textcolor{mydeepgreen}{参数}}: 无。
+    \item \textbf{\textcolor{mydeepgreen}{返回值}}: 无返回值。
+\end{itemize}
+
+\section{项目资源}
+\begin{itemize}
+    \item \textbf{源码仓库}: \href{https://github.com/Musubit/learn_pbl_with_c/tree/main/projects/SIMS}{GitHub - SIMS项目}
+    \item \textbf{在线文档}: \href{https://github.com/Musubit/learn_pbl_with_c/blob/main/projects/SIMS/README.md}{项目文档}
 \end{itemize}

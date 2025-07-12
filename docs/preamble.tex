@@ -27,8 +27,9 @@
 \renewcommand{\headrulewidth}{0pt} % 去掉页眉横线
 \setlength{\footskip}{15mm} % 调整页脚与正文的距离
 
-% 标题编号深度
+% 标题/目录编号深度
 \setcounter{secnumdepth}{3} % 3表示包含subsubsection层级
+\setcounter{tocdepth}{3}      % 目录显示到 subsubsection (3)
 
 % 标题格式
 \titleformat{\section}[hang]{\bfseries\large}{\thesection}{1em}{}
@@ -60,6 +61,7 @@
     morekeywords={uint8_t, uint16_t, uint32_t, size_t},
 }
 
+% 自定义颜色
 \definecolor{mydeepgreen}{RGB}{0,100,0}
 
 % 标题、作者、日期
