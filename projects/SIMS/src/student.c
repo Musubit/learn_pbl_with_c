@@ -23,3 +23,22 @@ void addStudent(Student* student) {
     }
     student->next = NULL;
 }
+
+void deleteStudent(int id) {
+    Student* current = head;
+    Student* previous = NULL;
+
+    while (current != NULL) {
+        if (current->id == id) {
+            if (previous == NULL) {
+                head = current->next;
+            } else {
+                previous->next = current->next; 
+            }
+            free(current);
+            return;
+        }
+        previous = current;
+        current = current->next;
+    }
+}
