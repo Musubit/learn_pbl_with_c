@@ -1,0 +1,72 @@
+\usepackage{tocloft}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{listings}
+\usepackage{nameref}
+\usepackage{fancyhdr} % 引入页眉页脚控制包
+
+% 页面设置
+\geometry{a4paper, left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
+
+% ===== 页码设置 =====
+% 设置所有页面底部居中页码
+\pagestyle{fancy} % 使用fancy页眉页脚样式
+\fancyhf{} % 清除所有页眉页脚设置
+\fancyfoot[C]{\thepage} % 设置页脚居中页码
+
+% 处理章节首页的特殊样式
+\fancypagestyle{plain}{
+    \fancyhf{} % 清除plain样式设置
+    \fancyfoot[C]{\thepage} % 设置章节首页也居中显示页码
+}
+
+% 确保其他页面样式也使用相同设置
+\renewcommand{\headrulewidth}{0pt} % 去掉页眉横线
+\setlength{\footskip}{15mm} % 调整页脚与正文的距离
+
+% 标题编号深度
+\setcounter{secnumdepth}{3} % 3表示包含subsubsection层级
+
+% 标题格式
+\titleformat{\section}[hang]{\bfseries\large}{\thesection}{1em}{}
+\titleformat{\subsection}[hang]{\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}[hang]{\bfseries}{\thesubsubsection}{1em}{} % 添加subsubsection格式
+
+% 超链接设置
+\definecolor{myblue}{RGB}{30,144,255}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=myblue,
+    urlcolor=myblue,
+    citecolor=myblue
+}
+
+% 代码高亮设置
+\lstset{
+    basicstyle=\ttfamily\small,
+    backgroundcolor=\color{white},
+    keywordstyle=\color{blue}\bfseries,
+    commentstyle=\color{gray}\itshape,
+    stringstyle=\color{red!70!black},
+    numberstyle=\tiny\color{gray},
+    frame=single,
+    breaklines=true,
+    columns=fullflexible,
+    tabsize=4,
+    showstringspaces=false,
+    morekeywords={uint8_t, uint16_t, uint32_t, size_t},
+}
+
+% 自定义颜色
+\definecolor{githubgray}{RGB}{245,245,245}
+\definecolor{githubblue}{RGB}{36,41,46}
+\definecolor{githubgreen}{RGB}{34,139,34}
+\definecolor{githubred}{RGB}{255,85,85}
+
+% 标题、作者、日期
+\title{Learn PBL with C}
+\author{Musubi}
+\date{\today}
