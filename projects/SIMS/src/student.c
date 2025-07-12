@@ -12,6 +12,11 @@ Student* createStudent(int id, const char* name, int age, float score) {
 }
 
 void addStudent(Student* student) {
+    if (findStudent(student->id) != NULL) {
+        fprintf(stderr, "Student with ID %d already exists\n", student->id);
+        free(student);
+        return;
+    }
     if (head == NULL) {
         head = student;
     } else {
