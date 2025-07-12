@@ -53,3 +53,39 @@ dkms.conf
 
 # debug information files
 *.dwo
+
+# LaTeX 中间文件
+*.aux
+*.log
+*.toc
+*.lof
+*.lot
+*.fls
+*.out
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.nav
+*.snm
+*.vrb
+*.xdv
+*.pdfsync
+*.thm
+*.upa
+*.upb
+*.cb
+*.cb2
+*.dvi
+*.ps
+*.eps
+*.ist
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.ist
+*.xdy
+*.run.xml
