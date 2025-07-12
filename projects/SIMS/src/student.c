@@ -79,11 +79,15 @@ void displayAllStudents() {
     printf("========================================\n");
     printf("所有学生信息：\n");
     printf("========================================\n");
+    printf("%-6s %-12s %-6s %8s\n", "ID", "姓名", "年龄", "成绩");
+    printf("----------------------------------------\n");
+    
     while (current != NULL) {
-        printf("ID: %d\t Name: %s\t Age: %d\t Score: %.2f\n",
+        printf("%-6d %-12s %-6d %-8.2f\n",
              current->id, current->name, current->age, current->score);
         current = current->next;
     }
+    printf("========================================\n");
 }
 
 void freeList() {

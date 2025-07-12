@@ -15,7 +15,10 @@ menu.o: src/menu.c include/menu.h
 run: all
 	clear && ./sims
 
+build: all
+	clear && gcc -o sims $(objects) -I include && ./sims
+
 clean:
 	clear && rm -f *.o sims
 
-.PHONY: all clean
+.PHONY: all clean build run
