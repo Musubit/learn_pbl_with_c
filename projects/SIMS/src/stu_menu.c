@@ -28,6 +28,7 @@ void handleAddStudent() {
     printf("输入学生成绩: ");
     scanf("%f", &score);
     addStudent(createStudent(id, name, age, score));
+    sysWait();
 }
 
 void handleDeleteStudent() {
@@ -35,6 +36,7 @@ void handleDeleteStudent() {
     printf("输入要删除的学生ID: ");
     scanf("%d", &id);
     deleteStudent(id);
+    sysWait();
 }
 
 void handleUpdateStudent() {
@@ -42,8 +44,20 @@ void handleUpdateStudent() {
     char name[50];
     float score;
 
+    
     printf("输入要更新的学生ID: ");
     scanf("%d", &id);
+    printf("原学生信息：\n");
+    printf("========================================\n");
+    printf("ID        姓名       年龄      成绩\n");
+    Student* student = findStudent(id);
+    if (student != NULL) {
+        printf("%-8d %-12s %-8d %-8.2f\n",
+               student->id, student->name, student->age, student->score);
+    } else {
+        printf("未找到该学生。\n");
+    }
+    printf("========================================\n");
     printf("输入新的姓名: ");
     scanf("%s", name);
     printf("输入新的年龄: ");
@@ -51,6 +65,7 @@ void handleUpdateStudent() {
     printf("输入新的成绩: ");
     scanf("%f", &score);
     updateStudent(id, name, age, score);
+    sysWait();
 }
 
 void handleFindStudent() {
@@ -59,13 +74,19 @@ void handleFindStudent() {
     scanf("%d", &id);
     Student* student = findStudent(id);
     if (student != NULL) {
-        printf("找到学生 - ID: %d, 姓名: %s, 年龄: %d, 成绩: %.2f\n",
-               student->id, student->name, student->age, student->score);
+        printf("=========================\n");
+        printf("学生ID: %d\n", student->id);
+        printf("学生姓名: %s\n", student->name);
+        printf("学生年龄: %d\n", student->age);
+        printf("学生成绩: %.2f\n", student->score);
+        printf("=========================\n");
     } else {
         printf("未找到该学生。\n");
     }
+    sysWait();
 }
 
 void handleDisplayAllStudents() {
     displayAllStudents();
+    sysWait();
 }

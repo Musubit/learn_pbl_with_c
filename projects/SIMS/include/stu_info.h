@@ -23,4 +23,6 @@ Student* findStudent(int id);
 void displayAllStudents();
 void freeList();
 
+void sysWait();
+
 #endif // STUDENT_H

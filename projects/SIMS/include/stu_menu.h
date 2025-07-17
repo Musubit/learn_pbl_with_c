@@ -1,7 +1,7 @@
 #ifndef MENU_H
 #define MENU_H
 
-#include "student.h"
+#include "stu_info.h"
 
 typedef enum {
     ADD_STUDENT = 1,

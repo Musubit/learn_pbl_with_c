@@ -30,6 +30,18 @@ void addStudent(Student* student) {
 }
 
 void deleteStudent(int id) {
+
+    if (findStudent(id) == NULL) {
+        printf("学生ID %d 不存在。\n", id);
+        sysWait();
+        return;
+    }
+    else if (head == NULL) {
+        printf("没有学生信息。\n");
+        sysWait();
+        return;
+    }
+
     Student* current = head;
     Student* previous = NULL;
 
@@ -41,6 +53,7 @@ void deleteStudent(int id) {
                 previous->next = current->next; 
             }
             free(current);
+            printf("删除成功。\n");
             return;
         }
         previous = current;
@@ -99,4 +112,10 @@ void freeList() {
         current = next;
     }
     head = NULL;
+}
+
+void sysWait() {
+    printf("\n按任意键继续...\n");
+    getchar(); // 等待用户输入
+    getchar(); // 处理换行符
 }
