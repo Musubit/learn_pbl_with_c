@@ -1,4 +1,4 @@
-#include "menu.h"
+#include "stu_menu.h"
 
 void displayMenu() {
     printf("========================================\n");
