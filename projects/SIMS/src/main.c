@@ -1,5 +1,5 @@
-#include "student.h"
-#include "menu.h"
+#include "stu_info.h"
+#include "stu_menu.h"
 
 int main() {
     int choice;

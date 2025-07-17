@@ -1,4 +1,4 @@
-#include "student.h"
+#include "stu_info.h"
 
 Student* head = NULL;
 
