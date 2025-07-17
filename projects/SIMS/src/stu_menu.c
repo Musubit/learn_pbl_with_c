@@ -1,4 +1,5 @@
 #include "stu_menu.h"
+#include "stu_file.h"
 
 void displayMenu() {
     printf("========================================\n");
@@ -9,7 +10,8 @@ void displayMenu() {
     printf("3. 更新学生信息\n");
     printf("4. 查找学生\n");
     printf("5. 显示所有学生\n");
-    printf("6. 退出系统\n");
+    printf("6. 保存学生信息到文件\n");
+    printf("7. 退出系统\n");
     printf("========================================\n");
     printf("请选择操作 (1-6): ");
 }
@@ -88,5 +90,11 @@ void handleFindStudent() {
 
 void handleDisplayAllStudents() {
     displayAllStudents();
+    sysWait();
+}
+
+void handleSaveFile() {
+    saveStudentsToFile(DEFAULT_FILENAME);
+    printf("学生信息已保存到文件 %s\n", DEFAULT_FILENAME);
     sysWait();
 }

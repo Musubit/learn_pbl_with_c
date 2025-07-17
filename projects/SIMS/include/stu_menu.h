@@ -9,6 +9,7 @@ typedef enum {
     UPDATE_STUDENT,
     FIND_STUDENT,
     DISPLAY_ALL_STUDENTS,
+    SAVE_FILE,
     EXIT
 } MenuChoice;
 
@@ -19,5 +20,6 @@ void handleDeleteStudent();
 void handleUpdateStudent();
 void handleFindStudent();
 void handleDisplayAllStudents();
+void handleSaveFile();
 
 #endif // MENU_H

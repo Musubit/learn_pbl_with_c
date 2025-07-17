@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "stu_file.h": "c",
+        "stu_menu.h": "c"
+    }
+}
