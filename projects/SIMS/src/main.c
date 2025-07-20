@@ -1,13 +1,19 @@
 #include "stu_info.h"
 #include "stu_menu.h"
 #include "stu_file.h"
+#include "stu_database.h"
 
 int main() {
     int choice;
-    int id, age;
-    char name[50];
-    float score;
-    loadStudentsFromFile(DEFAULT_FILENAME);
+    
+    // 初始化数据库
+    if (initDatabase() != 0) {
+        fprintf(stderr, "数据库初始化失败，程序退出。\n");
+        return -1;
+    }
+    
+    // 从数据库加载数据
+    loadAllStudentsFromDB();
 
     while(1) {
         displayMenu();
@@ -31,8 +37,15 @@ int main() {
             case SAVE_FILE:
                 handleSaveFile();
                 break;
+            case LOAD_FROM_DB:
+                handleLoadFromDB();
+                break;
+            case SAVE_TO_DB:
+                handleSaveToDB();
+                break;
             case EXIT:
                 freeList();
+                closeDatabase();  // 关闭数据库连接
                 printf("感谢使用学生信息管理系统！\n");
                 exit(0);
             default:

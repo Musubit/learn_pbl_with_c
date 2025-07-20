@@ -1,5 +1,6 @@
 #include "stu_menu.h"
 #include "stu_file.h"
+#include "stu_database.h"
 
 void displayMenu() {
     printf("========================================\n");
@@ -11,9 +12,11 @@ void displayMenu() {
     printf("4. 查找学生\n");
     printf("5. 显示所有学生\n");
     printf("6. 保存学生信息到文件\n");
-    printf("7. 退出系统\n");
+    printf("7. 从数据库加载学生信息\n");        // 新增
+    printf("8. 保存学生信息到数据库\n");        // 新增
+    printf("9. 退出系统\n");
     printf("========================================\n");
-    printf("请选择操作 (1-6): ");
+    printf("请选择操作 (1-9): ");
 }
 
 void handleAddStudent() {
@@ -29,7 +32,17 @@ void handleAddStudent() {
     scanf("%d", &age);
     printf("输入学生成绩: ");
     scanf("%f", &score);
-    addStudent(createStudent(id, name, age, score));
+    
+    Student* student = createStudent(id, name, age, score);
+    if (student != NULL) {
+        addStudent(student);
+        // 同时保存到数据库
+        if (saveStudentToDB(student) == 0) {
+            printf("学生信息已添加并保存到数据库。\n");
+        } else {
+            printf("学生信息已添加到内存，但保存到数据库失败。\n");
+        }
+    }
     sysWait();
 }
 
@@ -96,5 +109,29 @@ void handleDisplayAllStudents() {
 void handleSaveFile() {
     saveStudentsToFile(DEFAULT_FILENAME);
     printf("学生信息已保存到文件 %s\n", DEFAULT_FILENAME);
+    sysWait();
+}
+
+void handleLoadFromDB() {
+    if (loadAllStudentsFromDB() == 0) {
+        printf("从数据库加载学生信息成功。\n");
+    } else {
+        printf("从数据库加载学生信息失败。\n");
+    }
+    sysWait();
+}
+
+void handleSaveToDB() {
+    Student* current = head;
+    int count = 0;
+    
+    while (current != NULL) {
+        if (saveStudentToDB(current) == 0) {
+            count++;
+        }
+        current = current->next;
+    }
+    
+    printf("成功保存 %d 条学生信息到数据库。\n", count);
     sysWait();
 }
